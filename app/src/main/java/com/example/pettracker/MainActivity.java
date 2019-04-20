@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private MyPetsListAdapter adapter;
     private Toolbar toolbar;
-    private DividerItemDecoration itemDecoration;
-    private ImageView favoriteButton;
     private ArrayList<Pets> myPetsList;
 
     private FloatingActionButton fab;
@@ -72,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*                Intent intent = new Intent(v.getContext(), AddRecepeActivity.class);
-                v.getContext().startActivity(intent);*/
+               Intent intent = new Intent(v.getContext(), AddPetActivity.class);
+                v.getContext().startActivity(intent);
             }
         });
 

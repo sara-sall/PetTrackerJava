@@ -9,4 +9,12 @@
     <string name="forgotten_password">Glömt lösenord</string>
     <string name="to_sign_up">Har du inte ett konto? Skapa ett!</string>
     <string name="send_password">Skicka lösenord</string>
+    <string name="pet_name_input">Namn</string>
+    <string name="pet_name_breeder_input">Uppfödarnamn</string>
+    <string name="birthdateInput">Födelsedatum</string>
+    <string name="insurance_name">Försäkring</string>
+    <string name="insurance_nr">Försäkringsnummer</string>
+    <string name="raceInput">Ras</string>
+    <string name="petPreview">Förhandsgranska</string>
+    <string name="addPet">Lägg till husdjur</string>
 </resources>
