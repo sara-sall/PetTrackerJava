@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "68397843382",
+    "firebase_url": "https://pettracker-3f2a2.firebaseio.com",
+    "project_id": "pettracker-3f2a2",
+    "storage_bucket": "pettracker-3f2a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68397843382:android:f235993c8be688b8",
+        "android_client_info": {
+          "package_name": "com.example.pettracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68397843382-oi0tc2nbogls51rs6c1254vdb1af91sr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pettracker",
+            "certificate_hash": "27df56c68347e7d6a406d7346598986bb1f8a5ad"
+          }
+        },
+        {
+          "client_id": "68397843382-bhpdufj2r5kb4dncd21nd82jl8k09rj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzrsla_EsJeUKlzqe9FcewWTDViaL-sDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68397843382-bhpdufj2r5kb4dncd21nd82jl8k09rj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

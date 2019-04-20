@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PetTracker</string>
+    <string name="prompt_email">E-postadress</string>
+    <string name="prompt_password">Lösenord</string>
+    <string name="prompt_password_repeat">Repetera lösenord</string>
+    <string name="toLogin">Har du redan ett konto? Logga in!</string>
+    <string name="sign_up_buttonid">Skapa konto</string>
+    <string name="sign_in_button">Logga in</string>
+    <string name="forgotten_password">Glömt lösenord</string>
+    <string name="to_sign_up">Har du inte ett konto? Skapa ett!</string>
+    <string name="send_password">Skicka lösenord</string>
+</resources>
