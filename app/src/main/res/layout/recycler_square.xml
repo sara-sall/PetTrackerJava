@@ -16,32 +16,48 @@
     app:contentPaddingBottom="0dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
+    android:backgroundTint="#e9ffff"
+
         >
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
->
+        android:background="@color/dark_gray"
+        android:gravity="center"
+                                    >
 
         <ImageView
             android:id="@+id/petImageID"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="400dp"
+            android:layout_height="300dp"
             tools:srcCompat="@tools:sample/avatars[3]"
-            android:layout_gravity="center"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_gravity="center"/>
+
+        <FrameLayout
+            android:id="@+id/petNameBgID"
+            android:layout_width="400dp"
+            android:layout_height="60dp"
+            android:background="@color/dark_gray"
+            android:layout_alignBottom="@id/petImageID"
+            android:visibility="invisible"
+            />
 
         <TextView
             android:id="@+id/petNameID"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:text="TextView"
             android:layout_gravity="center"
-            android:gravity="center"/>
-    </LinearLayout>
+            android:gravity="center"
+            android:fontFamily="cursive"
+            android:textStyle="bold"
+            android:textColor="@color/colorOnPrimary"
+            android:layout_alignBottom="@id/petImageID"/>
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class MyPetsListAdapter extends RecyclerView.Adapter {
 
         private TextView petName;
         private ImageView petImage;
+        private FrameLayout petNameBg;
 
         private FirebaseFirestore db;
 
@@ -63,6 +65,7 @@ public class MyPetsListAdapter extends RecyclerView.Adapter {
             mContext = itemView.getContext();
             petName = (TextView) itemView.findViewById(R.id.petNameID);
             petImage = (ImageView) itemView.findViewById(R.id.petImageID);
+            petNameBg = (FrameLayout) itemView.findViewById(R.id.petNameBgID);
 
 
         }
@@ -114,7 +117,8 @@ public class MyPetsListAdapter extends RecyclerView.Adapter {
             sr.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.with(context).load(uri).resize(150, 95).onlyScaleDown().centerCrop().into(vh.petImage);
+                    vh.petNameBg.setVisibility(View.VISIBLE);
+                    Picasso.with(context).load(uri).resizeDimen(R.dimen.recycler_image_Width, R.dimen.recycler_image_Height).centerCrop().into(vh.petImage);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
