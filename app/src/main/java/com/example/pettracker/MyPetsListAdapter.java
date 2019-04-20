@@ -39,6 +39,10 @@ public class MyPetsListAdapter extends RecyclerView.Adapter {
 
         private FirebaseAuth mAuth;
         public String user;
+        private String petID;
+
+        private TextView petName;
+        private ImageView petImage;
 
         private FirebaseFirestore db;
 
@@ -57,6 +61,8 @@ public class MyPetsListAdapter extends RecyclerView.Adapter {
             db = FirebaseFirestore.getInstance();
 
             mContext = itemView.getContext();
+            petName = (TextView) itemView.findViewById(R.id.petNameID);
+            petImage = (ImageView) itemView.findViewById(R.id.petImageID);
 
 
         }
@@ -66,13 +72,13 @@ public class MyPetsListAdapter extends RecyclerView.Adapter {
             int position = getAdapterPosition();
 
             final Pets pet = myPetsList.get(position);
-/*            recepieID = recepieItem.getRecepeID();
-            if (v.getId() == R.id.recepieSquareMain) {
-                Intent intent = new Intent(v.getContext(), RecepieActivity.class);
-                intent.putExtra("recepeID", recepieID);
+            petID = pet.getPetId();
+            if (v.getId() == R.id.recyclerSquareMainID) {
+                Intent intent = new Intent(v.getContext(), ShowPetActivity.class);
+                intent.putExtra("petID", petID);
                 v.getContext().startActivity(intent);
 
-            }*/
+            }
 
 
         }
@@ -99,28 +105,30 @@ public class MyPetsListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int in) {
         final PetsViewHolder vh = (PetsViewHolder) viewHolder;
         final int i = in;
-/*        vh.textView.setText(recepieList.get(i).getTitle());
+        vh.petName.setText(myPetsList.get(i).getName());
 
         FirebaseStorage firebaseStorage= FirebaseStorage.getInstance();
 
-        if(!recepieList.get(i).getImageLink().equals("")){
-            StorageReference sr = firebaseStorage.getReference().child(recepieList.get(i).getImageLink());
+        if(!myPetsList.get(i).getImageId().equals("")){
+            StorageReference sr = firebaseStorage.getReference().child(myPetsList.get(i).getImageId());
             sr.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.with(context).load(uri).resize(150, 95).onlyScaleDown().centerCrop().into(vh.imageView);
+                    Picasso.with(context).load(uri).resize(150, 95).onlyScaleDown().centerCrop().into(vh.petImage);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Picasso.with(context).load(R.drawable.ic_restaurant_color_24dp).into(vh.imageView);
-                    vh.imageView.setImageResource(R.drawable.ic_restaurant_color_24dp);
+                    vh.petImage.setVisibility(View.GONE);
+                    //Picasso.with(context).load(R.drawable.ic_restaurant_color_24dp).into(vh.imageView);
+                    //vh.imageView.setImageResource(R.drawable.ic_restaurant_color_24dp);
                 }
             });
         }else{
-            Picasso.with(context).load(R.drawable.ic_restaurant_color_24dp).into(vh.imageView);
-            vh.imageView.setImageResource(R.drawable.ic_restaurant_color_24dp);
-        }*/
+            vh.petImage.setVisibility(View.GONE);
+            //Picasso.with(context).load(R.drawable.ic_restaurant_color_24dp).into(vh.imageView);
+            //vh.imageView.setImageResource(R.drawable.ic_restaurant_color_24dp);
+        }
 
 
     }

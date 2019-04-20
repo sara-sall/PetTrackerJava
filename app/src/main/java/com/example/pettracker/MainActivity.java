@@ -49,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
 
     private FirebaseFirestore db;
+    private CollectionReference petsRef;
 
     private FirebaseAuth mAuth;
+    private String user;
 
 
     @Override
@@ -60,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = FirebaseFirestore.getInstance();
+
         mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser().getUid();
+        petsRef = db.collection("users").document(user).collection("pets");
 
         toolbar = findViewById(R.id.toolbarID);
         toolbar.setTitle("");
@@ -93,42 +98,40 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void checkPets() {
-        /*receptRef.whereEqualTo("creator", creator).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        petsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException e) {
                 if (e != null) {
-                    Log.w(TAG, "Listen failed.", e);
+                    Log.w("!!!", "Listen failed.", e);
                     return;
                 }
                 for (DocumentChange doc : value.getDocumentChanges()) {
                     switch (doc.getType()){
                         case ADDED:
-                            receptRef.whereEqualTo("creator", creator).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            petsRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     QuerySnapshot q = task.getResult();
-                                    receptLista.clear();
+                                    myPetsList.clear();
                                     for (DocumentSnapshot d : q.getDocuments()) {
-                                        Recept recept = d.toObject(Recept.class);
-                                        receptLista.add(recept);
-                                        recept.setRecepeID(d.getId());
+                                        Pets pet = d.toObject(Pets.class);
+                                        myPetsList.add(pet);
+                                        pet.setPetId(d.getId());
                                     }
-                                    Log.d("test", "receptlista " + receptLista.size());
                                     adapter.notifyDataSetChanged();
-
                                 }
                             });
                             break;
                         case REMOVED:
-                            Recept r = null;
-                            for(Recept recept: receptLista){
-                                if(recept.getRecepeID().equals(doc.getDocument().getId())){
-                                    r = recept;
+                            Pets p = null;
+                            for(Pets pet: myPetsList){
+                                if(pet.getPetId().equals(doc.getDocument().getId())){
+                                    p = pet;
                                 }
                             }
 
-                            if (r != null){
-                                receptLista.remove(r);
+                            if (p != null){
+                                myPetsList.remove(p);
                                 adapter.notifyDataSetChanged();
                             }
 
@@ -140,6 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    */
+
     }
 }
